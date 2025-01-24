@@ -1,0 +1,50 @@
+/* Общее контейнерное позиционирование */
+.logo-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Позиционирование и размеры для name-logo.svg (desktop) */
+.logo-container.desktop {
+  top: calc(390 / 1024 * 100vh); /* Верхний отступ */
+  left: calc(435 / 1440 * 100vw); /* Левый отступ */
+  right: calc(434 / 1440 * 100vw); /* Правый отступ */
+  bottom: calc(471 / 1024 * 100vh); /* Нижний отступ */
+}
+
+.desktop-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Поддержка пропорций */
+}
+
+/* Позиционирование и размеры для mobile-logo.svg (после клика) */
+.logo-container.mobile {
+  top: calc(320 / 1024 * 100vh); /* Опускаем ближе к центру */
+  left: calc(435 / 1440 * 100vw);
+  right: calc(434 / 1440 * 100vw);
+  bottom: auto; /* Убираем нижний отступ */
+}
+
+.mobile-logo {
+  width: 50%; /* Уменьшенный размер логотипа */
+  height: auto;
+  object-fit: contain; /* Сохраняем пропорции */
+}
+
+/* Для экранов менее 768px: мобильная адаптация */
+@media (max-width: 768px) {
+  .logo-container.mobile {
+    top: calc(290 / 1024 * 100vh); /* Опускаем логотип ниже */
+    left: calc(320 / 1440 * 100vw);
+    right: calc(320 / 1440 * 100vw);
+    bottom: auto;
+  }
+
+  .mobile-logo {
+    width: 40%; /* Уменьшенный размер логотипа для маленьких экранов */
+  }
+}

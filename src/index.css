@@ -7,20 +7,38 @@
 }
 
 body {
+  position: relative;
   font-family: "Inter", sans-serif;
-  background-color: #5ce1ca; /* Устанавливаем цвет фона */
-  margin: 0; /* Убираем отступы */
-  padding: 0; /* Убираем внутренние отступы */
+  background-color: #4fd1c5;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow: hidden; /* Убираем прокрутку */
+}
+
+body::before {
+  content: "";
+  position: fixed; /* Теперь фон фиксирован относительно экрана */
+  top: 0; /* Фон начинается с самого верха */
+  left: 0;
+  width: 100vw; /* Полная ширина экрана */
+  height: 100vh; /* Полная высота экрана */
+  background-image: url("/waves.svg");
+  background-repeat: no-repeat;
+  background-size: cover; /* Волны занимают весь экран */
+  background-position: center top; /* Центрируем фон сверху */
+  z-index: -1; /* Отправляем фон за содержимое */
 }
 
 header {
-  height: 50px;
+  height: 80px; /* Высота заголовка */
   display: flex;
   padding: 0 2rem;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ccc;
   background: #fafafa;
+  z-index: 1; /* Заголовок остаётся поверх фона */
+  position: relative; /* Для корректного наложения */
 }
 
 main {
@@ -48,4 +66,17 @@ section ul li {
 .content,
 p {
   padding: 1rem 0;
+}
+
+@media (max-width: 768px) {
+  body::before {
+    background-size: contain; /* Уменьшаем фон на маленьких экранах */
+    background-position: top; /* Выравниваем по верхнему краю */
+  }
+}
+
+@media (min-width: 1200px) {
+  body::before {
+    background-size: cover; /* Полная адаптация на больших экранах */
+  }
 }
