@@ -1,0 +1,85 @@
+.mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Выравниваем элементы внутри шапки */
+    padding: 10px 18px; /* Отступы внутри шапки */
+    background-color: #ffffff;
+    height: 60px;
+    width: calc(327 / 375 * 100vw); /* Пропорциональная ширина */
+    position: absolute;
+    top: calc(50 / 375 * 100vw); /* Пропорциональный отступ сверху */
+    left: calc((100vw - calc(327 / 375 * 100vw)) / 2); /* Центрируем шапку */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Закругленные края */
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0; /* Невидимая по умолчанию */
+}
+
+/* Видимая шапка */
+.mobile-header.visible {
+    opacity: 1; /* Делаем шапку видимой */
+}
+
+/* Текст внутри шапки (если потребуется) */
+.mobile-header-text {
+    font-size: 16px;
+    color: #000;
+}
+
+/* Круглая кнопка */
+.mobile-header-button {
+    width: 50px; /* Ширина кнопки */
+    height: 50px; /* Высота кнопки */
+    margin-left: auto; /* Смещаем кнопку в конец шапки */
+    border-radius: 50%; /* Идеальный круг */
+    background-color: #013237; /* Цвет кнопки */
+    opacity: 0; /* Невидимая по умолчанию */
+    border: none; /* Убираем рамку */
+    cursor: pointer; /* Указатель при наведении */
+    outline: none; /* Убираем контур при фокусе */
+    position: relative; /* Для позиционирования полосок внутри */
+    transition: opacity 0.3s ease-in-out; /* Плавное появление */
+    display: flex; /* Для расположения полосок */
+    flex-direction: column; /* Полоски одна под другой */
+    align-items: center; /* Центрируем полоски по горизонтали */
+    justify-content: center; /* Центрируем полоски по вертикали */
+}
+
+/* Анимация видимой кнопки */
+.mobile-header.visible .mobile-header-button {
+    opacity: 1; /* Делаем кнопку видимой */
+}
+
+/* Горизонтальные полоски */
+.mobile-header-button .bar {
+    width: 36%; /* Ширина полоски */
+    height: 3px; /* Толщина полоски */
+    background-color: #ffffff; /* Цвет полосок */
+    border-radius: 2px; /* Легкое скругление */
+    margin: 2px 0; /* Расстояние между полосками */
+}
+
+/* Адаптивность для экранов до 480px */
+@media (max-width: 480px) {
+    .mobile-header {
+        width: calc(300 / 375 * 100vw); /* Пропорциональная ширина */
+        height: calc(60 / 375 * 100vw); /* Пропорциональная высота */
+        top: calc(40 / 375 * 100vw); /* Отступ сверху уменьшается */
+        left: calc((100vw - calc(300 / 375 * 100vw)) / 2); /* Центрируем шапку */
+    }
+
+    .mobile-header-button {
+        width: 45px; /* Уменьшаем размер кнопки */
+        height: 45px;
+    }
+
+    .mobile-header-button .bar {
+        width: 36%; /* Уменьшаем ширину полосок */
+        height: 2.5px; /* Уменьшаем толщину полосок */
+    }
+}
+
+
+
+
+  
