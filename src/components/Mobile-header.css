@@ -1,85 +1,240 @@
 .mobile-header {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; /* Выравниваем элементы внутри шапки */
-    padding: 10px 18px; /* Отступы внутри шапки */
-    background-color: #ffffff;
-    height: 60px;
-    width: calc(327 / 375 * 100vw); /* Пропорциональная ширина */
-    position: absolute;
-    top: calc(50 / 375 * 100vw); /* Пропорциональный отступ сверху */
-    left: calc((100vw - calc(327 / 375 * 100vw)) / 2); /* Центрируем шапку */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 10px; /* Закругленные края */
-    transition: opacity 0.3s ease-in-out;
-    opacity: 0; /* Невидимая по умолчанию */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Выравниваем элементы внутри шапки */
+  padding: 10px 18px; /* Отступы внутри шапки */
+  background-color: #ffffff;
+  height: 60px;
+  width: calc(327 / 375 * 100vw); /* Пропорциональная ширина */
+  position: absolute;
+  top: calc(50 / 375 * 100vw); /* Пропорциональный отступ сверху */
+  left: calc((100vw - calc(327 / 375 * 100vw)) / 2); /* Центрируем шапку */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; /* Закругленные края */
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0; /* Невидимая по умолчанию */
 }
 
 /* Видимая шапка */
 .mobile-header.visible {
-    opacity: 1; /* Делаем шапку видимой */
+  opacity: 1; /* Делаем шапку видимой */
 }
 
 /* Текст внутри шапки (если потребуется) */
 .mobile-header-text {
-    font-size: 16px;
-    color: #000;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #013237;
 }
 
 /* Круглая кнопка */
 .mobile-header-button {
-    width: 50px; /* Ширина кнопки */
-    height: 50px; /* Высота кнопки */
-    margin-left: auto; /* Смещаем кнопку в конец шапки */
-    border-radius: 50%; /* Идеальный круг */
-    background-color: #013237; /* Цвет кнопки */
-    opacity: 0; /* Невидимая по умолчанию */
-    border: none; /* Убираем рамку */
-    cursor: pointer; /* Указатель при наведении */
-    outline: none; /* Убираем контур при фокусе */
-    position: relative; /* Для позиционирования полосок внутри */
-    transition: opacity 0.3s ease-in-out; /* Плавное появление */
-    display: flex; /* Для расположения полосок */
-    flex-direction: column; /* Полоски одна под другой */
-    align-items: center; /* Центрируем полоски по горизонтали */
-    justify-content: center; /* Центрируем полоски по вертикали */
+  width: 50px; /* Ширина кнопки */
+  height: 50px; /* Высота кнопки */
+  margin-left: auto; /* Смещаем кнопку в конец шапки */
+  border-radius: 50%; /* Идеальный круг */
+  background-color: #013237; /* Цвет кнопки */
+  opacity: 0; /* Невидимая по умолчанию */
+  border: none; /* Убираем рамку */
+  cursor: pointer; /* Указатель при наведении */
+  outline: none; /* Убираем контур при фокусе */
+  position: relative; /* Для позиционирования полосок внутри */
+  transition: opacity 0.3s ease-in-out; /* Плавное появление */
+  display: flex; /* Для расположения полосок */
+  flex-direction: column; /* Полоски одна под другой */
+  align-items: center; /* Центрируем полоски по горизонтали */
+  justify-content: center; /* Центрируем полоски по вертикали */
 }
 
 /* Анимация видимой кнопки */
 .mobile-header.visible .mobile-header-button {
-    opacity: 1; /* Делаем кнопку видимой */
+  opacity: 1; /* Делаем кнопку видимой */
 }
 
 /* Горизонтальные полоски */
 .mobile-header-button .bar {
-    width: 36%; /* Ширина полоски */
-    height: 3px; /* Толщина полоски */
-    background-color: #ffffff; /* Цвет полосок */
-    border-radius: 2px; /* Легкое скругление */
-    margin: 2px 0; /* Расстояние между полосками */
+  width: 36%; /* Ширина полоски */
+  height: 3px; /* Толщина полоски */
+  background-color: #ffffff; /* Цвет полосок */
+  border-radius: 2px; /* Легкое скругление */
+  margin: 2px 0; /* Расстояние между полосками */
 }
 
 /* Адаптивность для экранов до 480px */
 @media (max-width: 480px) {
-    .mobile-header {
-        width: calc(300 / 375 * 100vw); /* Пропорциональная ширина */
-        height: calc(60 / 375 * 100vw); /* Пропорциональная высота */
-        top: calc(40 / 375 * 100vw); /* Отступ сверху уменьшается */
-        left: calc((100vw - calc(300 / 375 * 100vw)) / 2); /* Центрируем шапку */
-    }
+  .mobile-header {
+    width: calc(300 / 375 * 100vw); /* Пропорциональная ширина */
+    height: calc(60 / 375 * 100vw); /* Пропорциональная высота */
+    top: calc(40 / 375 * 100vw); /* Отступ сверху уменьшается */
+    left: calc((100vw - calc(300 / 375 * 100vw)) / 2); /* Центрируем шапку */
+  }
 
-    .mobile-header-button {
-        width: 45px; /* Уменьшаем размер кнопки */
-        height: 45px;
-    }
+  .mobile-header-button {
+    width: 45px; /* Уменьшаем размер кнопки */
+    height: 45px;
+  }
 
-    .mobile-header-button .bar {
-        width: 36%; /* Уменьшаем ширину полосок */
-        height: 2.5px; /* Уменьшаем толщину полосок */
-    }
+  .mobile-header-button .bar {
+    width: 36%; /* Уменьшаем ширину полосок */
+    height: 2.5px; /* Уменьшаем толщину полосок */
+  }
 }
 
+.empty-header {
+  display: flex;
+  flex-direction: column; /* Кнопки располагаются вертикально */
+  align-items: flex-start; /* Выравниваем кнопки по левому краю */
+  justify-content: center; /* Центрируем их по вертикали */
+  background-color: #ffffff; /* Белый фон */
+  height: 136px; /* Высота шапки */
+  width: calc(300 / 375 * 100vw); /* Пропорциональная ширина */
+  position: absolute; /* Позиционирование */
+  top: calc(144 / 375 * 100vw); /* Пропорциональный отступ сверху */
+  left: 50%; /* Центрируем шапку по горизонтали */
+  transform: translateX(-50%); /* Сдвигаем на 50% ширины для центрирования */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; /* Закругленные края */
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1; /* По умолчанию шапка видимая */
+  z-index: 100; /* Высокий слой, чтобы быть над всем */
+  padding: 10px 20px; /* Отступы внутри шапки */
+}
 
+.empty-header-button {
+  display: flex; /* Для размещения иконки и текста в строку */
+  align-items: center; /* Выравниваем иконку и текст по вертикали */
+  background-color: #ffffff; /* Цвет кнопок */
+  color: #013237; /* Цвет текста */
+  border: none; /* Убираем рамку */
+  padding: 5px 5px; /* Больше отступов внутри кнопки для большего пространства */
+  margin: 5px 0; /* Отступы между кнопками */
+  font-size: 16px; /* Размер текста */
+  cursor: pointer; /* Указатель при наведении */
+  transition: background-color 0.3s ease-in-out;
+  text-align: left; /* Выравниваем текст влево */
+  gap: 8px; /* Используем gap для большего пространства между иконкой и текстом */
+}
 
+/* Ховер для кнопок */
+.empty-header-button:hover {
+  background-color: #016f7c; /* Более светлый оттенок */
+}
 
-  
+.button-icon {
+  width: 20px; /* Увеличиваем размер иконок */
+  height: 20px;
+}
+
+/* Стиль для размытия фона */
+.blur-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px); /* Размытие фона */
+  background-color: rgba(255, 255, 255, 0.5); /* Полупрозрачный белый фон */
+  z-index: 99; /* Слой ниже шапки и кнопок */
+}
+
+/* Стили для кнопок "Войти" и "Регистрация" */
+.mobile-buttons {
+  position: fixed;
+  top: 53.7vh; /* Отступ сверху 53.7% от высоты экрана (примерно 436px на 812px) */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2.67vw; /* Расстояние между кнопками (10px на 375px) */
+  z-index: 99; /* Слой выше размытого фона */
+}
+
+.rounded-button.secondary {
+  background-color: #ffffff; /* Цвет второй кнопки */
+  color: #013237; /* Цвет текста */
+  border: 1px solid #013237; /* Рамка */
+}
+
+.rounded-button:hover {
+  background-color: #016f7c; /* Цвет при наведении */
+}
+
+.rounded-button.secondary:hover {
+  background-color: #f0f0f0; /* Цвет при наведении */
+}
+
+/* Шапка с кнопками (аналитика, профиль, контакты) */
+.empty-header {
+  z-index: 100; /* Шапка выше размытого фона */
+}
+
+/* Стили для шапки после нажатия на "Войти" */
+.login-header {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 327px; /* Ширина шапки */
+  background-color: #ffffff; /* Белый фон */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень */
+  z-index: 100; /* Слой выше размытого фона */
+  padding: 24px; /* Отступы внутри шапки */
+  border-radius: 10px; /* Закругленные углы */
+  text-align: left; /* Выравнивание текста по левому краю */
+}
+
+.login-header h2 {
+  font-size: 20px;
+  margin-bottom: 4px; /* Уменьшим отступ между заголовком и текстом */
+  color: #4fd1c5; /* Цвет заголовка */
+}
+
+.login-header p {
+  font-size: 14px;
+  color: #a0aec0; /* Цвет текста */
+  margin-bottom: 14px; /* Отступ перед формой */
+}
+
+.login-header form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-header label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.login-header input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-header button {
+  padding: 10px;
+  background-color: #013237;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-header button:hover {
+  background-color: #016f7c;
+}
+
+.login-header p:last-child {
+  margin-top: 16px;
+}
+
+.login-header a {
+  color: #013237;
+  text-decoration: none;
+}
+
+.login-header a:hover {
+  text-decoration: underline;
+}

@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Header.css";
 
 const Header = () => {
+  const [showLoginHeader, setShowLoginHeader] = useState(false); // Состояние для отображения шапки входа
+  const [isBackgroundShifted, setIsBackgroundShifted] = useState(false); // Состояние для смещения фона
+
+  // Обработчик нажатия на кнопку "ВОЙТИ"
+  const handleLoginClick = () => {
+    setShowLoginHeader(true); // Показываем шапку входа
+    setIsBackgroundShifted(true); // Смещаем фон вправо
+  };
+
+  // Добавляем/удаляем класс `shifted` к `body`
+  useEffect(() => {
+    if (isBackgroundShifted) {
+      document.body.classList.add("shifted");
+    } else {
+      document.body.classList.remove("shifted");
+    }
+  }, [isBackgroundShifted]);
+
   return (
     <header className="header">
+      {/* Основная шапка */}
       <div className="header__container">
         {/* Логотип */}
         <div className="header__logo">DEWIAR AI</div>
@@ -72,9 +91,33 @@ const Header = () => {
           </a>
         </nav>
 
-        {/* Кнопка */}
-        <button className="rounded-button">ВОЙТИ</button>
+        {/* Кнопка "ВОЙТИ" */}
+        <button className="rounded-button" onClick={handleLoginClick}>
+          ВОЙТИ
+        </button>
       </div>
+
+      {/* Шапка входа */}
+      {showLoginHeader && (
+        <div className={`login-header ${isBackgroundShifted ? "desktop" : ""}`}>
+          <h2>ДОБРО ПОЖАЛОВАТЬ!</h2>
+          <p>Введите свой почтовый адрес и пароль</p>
+          <form>
+            <label>
+              Почта
+              <input type="email" placeholder="Введите почту" />
+            </label>
+            <label>
+              Пароль
+              <input type="password" placeholder="Введите пароль" />
+            </label>
+            <button type="submit">Войти</button>
+          </form>
+          <p>
+            Нет аккаунта? <a href="#">Зарегистрироваться</a>
+          </p>
+        </div>
+      )}
     </header>
   );
 };
