@@ -1,24 +1,42 @@
 import React, { useState, useEffect } from "react";
 import "./Header.css";
+import GoogleIcon from "/google.svg"; // Импортируем иконку Google
+import AppleIcon from "/apple.svg"; // Импортируем иконку Apple
+import FacebookIcon from "/facebook.svg"; // Импортируем иконку Facebook
 
 const Header = () => {
-  const [showLoginHeader, setShowLoginHeader] = useState(false); // Состояние для отображения шапки входа
-  const [isBackgroundShifted, setIsBackgroundShifted] = useState(false); // Состояние для смещения фона
+  const [showLoginHeader, setShowLoginHeader] = useState(false);
+  const [showRegisterHeader, setShowRegisterHeader] = useState(false);
+  const [isBackgroundShifted, setIsBackgroundShifted] = useState(false);
+  const [isBackgroundShiftedUp, setIsBackgroundShiftedUp] = useState(false);
 
-  // Обработчик нажатия на кнопку "ВОЙТИ"
   const handleLoginClick = () => {
-    setShowLoginHeader(true); // Показываем шапку входа
-    setIsBackgroundShifted(true); // Смещаем фон вправо
+    setShowLoginHeader(true);
+    setShowRegisterHeader(false);
+    setIsBackgroundShifted(true);
+    setIsBackgroundShiftedUp(false);
   };
 
-  // Добавляем/удаляем класс `shifted` к `body`
+  const handleRegisterClick = () => {
+    setShowRegisterHeader(true);
+    setShowLoginHeader(false);
+    setIsBackgroundShifted(false);
+    setIsBackgroundShiftedUp(true);
+  };
+
   useEffect(() => {
     if (isBackgroundShifted) {
       document.body.classList.add("shifted");
     } else {
       document.body.classList.remove("shifted");
     }
-  }, [isBackgroundShifted]);
+
+    if (isBackgroundShiftedUp) {
+      document.body.classList.add("shifted-up");
+    } else {
+      document.body.classList.remove("shifted-up");
+    }
+  }, [isBackgroundShifted, isBackgroundShiftedUp]);
 
   return (
     <header className="header">
@@ -99,7 +117,7 @@ const Header = () => {
 
       {/* Шапка входа */}
       {showLoginHeader && (
-        <div className={`login-header ${isBackgroundShifted ? "desktop" : ""}`}>
+        <div className="login-header">
           <h2>ДОБРО ПОЖАЛОВАТЬ!</h2>
           <p>Введите свой почтовый адрес и пароль</p>
           <form>
@@ -114,7 +132,50 @@ const Header = () => {
             <button type="submit">Войти</button>
           </form>
           <p>
-            Нет аккаунта? <a href="#">Зарегистрироваться</a>
+            Нет аккаунта?{" "}
+            <a href="#" onClick={handleRegisterClick}>
+              Зарегистрироваться
+            </a>
+          </p>
+        </div>
+      )}
+
+      {/* Шапка регистрации */}
+      {showRegisterHeader && (
+        <div className="register-header">
+          <div className="register-header__buttons">
+            <button className="register-header__button">
+              <img src={GoogleIcon} alt="Google" />
+            </button>
+            <button className="register-header__button">
+              <img src={AppleIcon} alt="Apple" />
+            </button>
+            <button className="register-header__button">
+              <img src={FacebookIcon} alt="Facebook" />
+            </button>
+          </div>
+          <form>
+            <label>
+              Имя и Фамилия
+              <input type="text" placeholder="Введите имя и фамилию" />
+            </label>
+            <label>
+              Почта
+              <input type="email" placeholder="Введите почту" />
+            </label>
+            <label>
+              Пароль
+              <input type="password" placeholder="Введите пароль" />
+            </label>
+            <button type="submit" className="register-header__submit">
+              ЗАРЕГИСТРИРОВАТЬСЯ
+            </button>
+          </form>
+          <p>
+            Уже есть аккаунт?{" "}
+            <a href="#" onClick={handleLoginClick}>
+              Войти
+            </a>
           </p>
         </div>
       )}
